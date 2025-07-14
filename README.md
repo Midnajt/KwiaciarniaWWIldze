@@ -29,6 +29,10 @@ Prosta, jednodokumentowa strona internetowa stworzona dla Kwiaciarni w Wildze pr
 3. **O nas** - historia kwiaciarni i informacje o właścicielce
 4. **Kontakt** - dane kontaktowe, godziny otwarcia i mapa
 
+## Zasoby graficzne
+
+📸 Zdjęcia wykorzystane na stronie pochodzą z serwisu [Pixabay](https://pixabay.com/) i są dostępne na licencji Creative Commons. Dziękujemy twórcom za udostępnienie swoich prac.
+
 ## Informacje o kwiaciarni
 
 **Kwiaciarnia w Wildze**
