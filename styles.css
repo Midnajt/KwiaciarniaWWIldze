@@ -1,0 +1,119 @@
+.nav-link.active {
+  color: #8b4513;
+  font-weight: 600;
+}
+
+.section {
+  min-height: 80vh;
+}
+
+.section.hidden {
+  display: none;
+}
+
+/* Custom Tailwind colors */
+.text-flower-pink {
+  color: #f8bbd9;
+}
+
+.text-flower-green {
+  color: #90c695;
+}
+
+.text-flower-purple {
+  color: #8b4513;
+}
+
+.bg-flower-pink {
+  background-color: #f8bbd9;
+}
+
+.bg-flower-green {
+  background-color: #90c695;
+}
+
+.bg-flower-purple {
+  background-color: #8b4513;
+}
+
+.hover\:text-flower-pink:hover {
+  color: #f8bbd9;
+}
+
+.hover\:text-flower-purple:hover {
+  color: #8b4513;
+}
+
+.focus\:border-flower-purple:focus {
+  border-color: #8b4513;
+}
+
+.hover\:bg-purple-600:hover {
+  background-color: #a0522d;
+}
+
+/* Gradient backgrounds */
+.gradient-pink-purple {
+  background: linear-gradient(to right, #f8bbd9, #8b4513);
+}
+
+.gradient-red {
+  background: linear-gradient(to bottom right, #fecaca, #f87171);
+}
+
+.gradient-pink {
+  background: linear-gradient(to bottom right, #fbcfe8, #f472b6);
+}
+
+.gradient-green {
+  background: linear-gradient(to bottom right, #bbf7d0, #4ade80);
+}
+
+.gradient-yellow {
+  background: linear-gradient(to bottom right, #fef3c7, #facc15);
+}
+
+.gradient-purple {
+  background: linear-gradient(to bottom right, #e9d5ff, #a855f7);
+}
+
+.gradient-orange {
+  background: linear-gradient(to bottom right, #fed7aa, #fb923c);
+}
+
+.gradient-flower-circle {
+  background: linear-gradient(to bottom right, #f8bbd9, #8b4513);
+}
+
+/* Logo link styles - prevent style changes on click */
+.logo-link {
+  text-decoration: none !important;
+  font-weight: bold !important;
+  color: #8b4513 !important;
+}
+
+.logo-link:hover {
+  color: #8b4513 !important;
+}
+
+.logo-link:active {
+  color: #8b4513 !important;
+  font-weight: bold !important;
+}
+
+.logo-link:focus {
+  color: #8b4513 !important;
+  font-weight: bold !important;
+  outline: none;
+}
+
+.logo-link:visited {
+  color: #8b4513 !important;
+  font-weight: bold !important;
+}
+
+/* Handwriting font for titles */
+.handwriting-font {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 600;
+}
