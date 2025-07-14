@@ -42,7 +42,8 @@ Najstarsza kwiaciarnia w Wildze z ponad 30-letnim doświadczeniem, zachowująca 
 ## Autor
 
 Strona stworzona przez AddPattern z wykorzystaniem AI jako prezent rodzinny.
+kontakt do twórcy: midnajt0@gmail.com
 
 ---
 
-_💝 Dla Pani Teresy - z miłością od syna_
+💝 Dla Pani Teresy - z miłością od syna
