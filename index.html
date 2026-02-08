@@ -85,9 +85,35 @@
       </div>
     </div>
     <!-- Image section before footer -->
-    <div class="container mx-auto px-4 py-16">
+    <!-- <div class="container mx-auto px-4 py-16">
       <div class="text-center">
         <img src="images/kwiaciarnia.png" alt="Kwiaciarnia w Wildze" class="mx-auto rounded-lg shadow-lg max-w-full h-auto cursor-pointer lightbox-image" data-src="images/kwiaciarnia.png">
+      </div>
+    </div> -->
+    <!-- Walentynki – mini galeria -->
+    <div class="container mx-auto px-4 py-16">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-flower-purple mb-4">Walentynki 🌹❤️</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+          Walentynki to idealny moment, by wyrazić uczucia kwiatami. Zapraszamy po bukiety róż oraz kompozycje z serduszkami — sprawdź naszą ofertę na 14 lutego. <br>🌹💕❤️ Niech Twoja druga połówka poczuje się wyjątkowo!
+        </p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4" id="gallery-valentines">
+        <div class="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+          <img src="images/valentines/1.jpg" alt="Oferta walentynkowa - bukiet 1" class="w-full h-40 md:h-52 object-cover cursor-pointer lightbox-image" data-src="images/valentines/1.jpg" data-gallery="valentines">
+        </div>
+        <div class="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+          <img src="images/valentines/2.jpg" alt="Oferta walentynkowa - bukiet 2" class="w-full h-40 md:h-52 object-cover cursor-pointer lightbox-image" data-src="images/valentines/2.jpg" data-gallery="valentines">
+        </div>
+        <div class="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+          <img src="images/valentines/3.jpg" alt="Oferta walentynkowa - bukiet 3" class="w-full h-40 md:h-52 object-cover cursor-pointer lightbox-image" data-src="images/valentines/3.jpg" data-gallery="valentines">
+        </div>
+        <div class="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+          <img src="images/valentines/4.jpg" alt="Oferta walentynkowa - bukiet 4" class="w-full h-40 md:h-52 object-cover cursor-pointer lightbox-image" data-src="images/valentines/4.jpg" data-gallery="valentines">
+        </div>
+        <div class="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow col-span-2 md:col-span-1">
+          <img src="images/valentines/5.jpg" alt="Oferta walentynkowa - bukiet 5" class="w-full h-40 md:h-52 object-cover cursor-pointer lightbox-image" data-src="images/valentines/5.jpg" data-gallery="valentines">
+        </div>
       </div>
     </div>
   </section>
@@ -342,9 +368,13 @@
 
   <!-- Lightbox Modal -->
   <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden flex items-center justify-center p-4">
-    <div class="relative max-w-4xl max-h-full">
-      <img id="lightbox-image" src="" alt="" class="max-w-full max-h-full object-contain rounded-lg">
-      <button id="lightbox-close" class="absolute top-4 right-4 text-white text-3xl hover:text-gray-300 transition-colors">&times;</button>
+    <div class="relative max-w-4xl max-h-full flex items-center w-full">
+      <button id="lightbox-prev" class="absolute left-2 md:left-0 md:-translate-x-16 text-white text-4xl md:text-5xl hover:text-gray-300 transition-colors z-10 p-3 md:p-2 rounded-full md:bg-transparent bg-black bg-opacity-50 min-w-[48px] min-h-[48px] flex items-center justify-center lightbox-arrow touch-manipulation" aria-label="Poprzednie zdjęcie" title="Poprzednie (←)">&#10094;</button>
+      <div id="lightbox-content" class="relative flex-1 flex justify-center touch-manipulation">
+        <img id="lightbox-image" src="" alt="" class="max-w-full max-h-[85vh] object-contain rounded-lg select-none">
+        <button id="lightbox-close" class="absolute top-4 right-4 text-white text-3xl hover:text-gray-300 transition-colors bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center">&times;</button>
+      </div>
+      <button id="lightbox-next" class="absolute right-2 md:right-0 md:translate-x-16 text-white text-4xl md:text-5xl hover:text-gray-300 transition-colors z-10 p-3 md:p-2 rounded-full md:bg-transparent bg-black bg-opacity-50 min-w-[48px] min-h-[48px] flex items-center justify-center lightbox-arrow touch-manipulation" aria-label="Następne zdjęcie" title="Następne (→)">&#10095;</button>
     </div>
   </div>
 

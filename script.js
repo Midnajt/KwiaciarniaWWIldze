@@ -59,34 +59,94 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Lightbox functionality
+  // Lightbox functionality with gallery navigation
   const lightbox = document.getElementById('lightbox');
   const lightboxImage = document.getElementById('lightbox-image');
   const lightboxClose = document.getElementById('lightbox-close');
+  const lightboxPrev = document.getElementById('lightbox-prev');
+  const lightboxNext = document.getElementById('lightbox-next');
   const lightboxImages = document.querySelectorAll('.lightbox-image');
+
+  let currentGallery = []; // { src, alt }[]
+  let currentIndex = 0;
+
+  function showLightboxImage(src, alt) {
+    lightboxImage.src = src;
+    lightboxImage.alt = alt || '';
+  }
+
+  function showPrevImage(e) {
+    if (e) e.stopPropagation();
+    if (currentGallery.length <= 1) return;
+    currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+    const item = currentGallery[currentIndex];
+    showLightboxImage(item.src, item.alt);
+  }
+
+  function showNextImage(e) {
+    if (e) e.stopPropagation();
+    if (currentGallery.length <= 1) return;
+    currentIndex = (currentIndex + 1) % currentGallery.length;
+    const item = currentGallery[currentIndex];
+    showLightboxImage(item.src, item.alt);
+  }
+
+  function setGalleryArrowsVisible(visible) {
+    const arrows = document.querySelectorAll('.lightbox-arrow');
+    arrows.forEach((el) => {
+      el.style.visibility = visible ? 'visible' : 'hidden';
+      el.style.pointerEvents = visible ? 'auto' : 'none';
+    });
+  }
+  setGalleryArrowsVisible(false); // hide until a gallery is opened
 
   // Open lightbox when clicking on images
   lightboxImages.forEach((image) => {
     image.addEventListener('click', function () {
       const imageSrc = this.getAttribute('data-src') || this.src;
-      const imageAlt = this.alt;
+      const imageAlt = this.alt || '';
+      const galleryName = this.getAttribute('data-gallery');
 
-      lightboxImage.src = imageSrc;
-      lightboxImage.alt = imageAlt;
+      if (galleryName) {
+        const galleryImages = document.querySelectorAll('.lightbox-image[data-gallery="' + galleryName + '"]');
+        currentGallery = Array.from(galleryImages).map((img) => ({
+          src: img.getAttribute('data-src') || img.src,
+          alt: img.alt || '',
+        }));
+        currentIndex = currentGallery.findIndex((item) => item.src === imageSrc);
+        if (currentIndex < 0) currentIndex = 0;
+        setGalleryArrowsVisible(currentGallery.length > 1);
+      } else {
+        currentGallery = [];
+        setGalleryArrowsVisible(false);
+      }
+
+      showLightboxImage(imageSrc, imageAlt);
       lightbox.classList.remove('hidden');
-      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      document.body.style.overflow = 'hidden';
     });
   });
 
   // Close lightbox
   function closeLightbox() {
     lightbox.classList.add('hidden');
-    document.body.style.overflow = 'auto'; // Restore scrolling
+    document.body.style.overflow = 'auto';
   }
 
   // Close lightbox when clicking close button
   if (lightboxClose) {
-    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxClose.addEventListener('click', function (e) {
+      e.stopPropagation();
+      closeLightbox();
+    });
+  }
+
+  // Prev/Next arrows
+  if (lightboxPrev) {
+    lightboxPrev.addEventListener('click', showPrevImage);
+  }
+  if (lightboxNext) {
+    lightboxNext.addEventListener('click', showNextImage);
   }
 
   // Close lightbox when clicking outside the image
@@ -98,12 +158,46 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Close lightbox with Escape key
+  // Keyboard: Escape close, Left/Right navigate gallery
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+    if (lightbox.classList.contains('hidden')) return;
+    if (e.key === 'Escape') {
       closeLightbox();
+      return;
+    }
+    if (currentGallery.length > 1) {
+      if (e.key === 'ArrowLeft') {
+        showPrevImage();
+        e.preventDefault();
+      } else if (e.key === 'ArrowRight') {
+        showNextImage();
+        e.preventDefault();
+      }
     }
   });
+
+  // Touch swipe: na telefonie przewijanie zdjęć gestem w lewo/w prawo
+  const lightboxContent = document.getElementById('lightbox-content');
+  const swipeMin = 50;
+  let touchStartX = 0;
+
+  if (lightboxContent) {
+    lightboxContent.addEventListener(
+      'touchstart',
+      function (e) {
+        if (currentGallery.length <= 1) return;
+        touchStartX = e.touches[0].clientX;
+      },
+      { passive: true }
+    );
+    lightboxContent.addEventListener('touchend', function (e) {
+      if (currentGallery.length <= 1) return;
+      const touchEndX = e.changedTouches[0].clientX;
+      const delta = touchStartX - touchEndX;
+      if (delta > swipeMin) showNextImage();
+      else if (delta < -swipeMin) showPrevImage();
+    });
+  }
 });
 
 console.log('kocham Dorotę ❤');
